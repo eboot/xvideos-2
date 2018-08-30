@@ -60,7 +60,7 @@ XVideos.details = function details(url, cb) {
       var duration = $(".duration").text().trim().replace(/^-/, "").trim();
 
       var flv;
-      if (matches = body.match(/flv_url=(http%3A%2F%2F.+?)&amp;/)) {
+      if (matches = body.match(/html5player.setVideoUrlLow\(\'(https?\:.*?)\'\);/i)){
         flv = unescape(matches[1]);
       }
       if (!flv) {
@@ -68,7 +68,7 @@ XVideos.details = function details(url, cb) {
       }
 
       var thumb;
-      if (matches = body.match(/url_bigthumb=(http:\/\/.+?)&amp;/)) {
+      if (matches = body.match(/html5player.setThumbUrl\(\'(https?\:.*?)\'\);/i)) {
         thumb = unescape(matches[1]);
       }
 
